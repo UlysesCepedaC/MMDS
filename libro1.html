@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+ <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -6,13 +6,11 @@
   <title>Página de Libro</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    
-* {
+  * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-
 body {
   font-family: Arial, sans-serif;
   background-color: #f7f7f7;
@@ -21,7 +19,6 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
-
 main {
   flex: 1;
   padding: 30px;
@@ -29,41 +26,33 @@ main {
   flex-direction: column;
   gap: 30px;
 }
-
 .contenedor-centro {
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
 }
-
 #portada-info {
   display: flex;
   gap: 20px;
   align-items: flex-start;
 }
-
 #portada-info img {
   width: 190px;
   height: 270px;
   object-fit: cover;
   border-radius: 5px;
 }
-
 #portada-info div {
   flex: 1;
 }
-
-/*#detalles {
-  
-}*/
-
+#detalles {
+}
 #contenido-inferior {
   display: flex;
   gap: 0px;
   margin-left: 89px;
   margin-right: 89px;
 }
-
 #resena {
   flex: 2;
   background: white;
@@ -71,7 +60,6 @@ main {
   border-radius: 5px;
   box-shadow: 0 0 8px rgb(0 0 0 / 0.1);
 }
-
 #libros-recomendados {
   flex: 1;
   background: white;
@@ -79,19 +67,16 @@ main {
   border-radius: 5px;
   box-shadow: 0 0 8px rgb(0 0 0 / 0.1);
 }
-
 #libros-recomendados ul {
   list-style: inside disc;
   margin-top: 10px;
 }
-
 #libros-recomendados li {
   margin-bottom: 8px;
 }
 #libros-recomendados h3 {
   text-align: center;
 }
-
 footer {
   background-color: #333;
   color: white;
@@ -107,12 +92,10 @@ footer {
   flex-direction: column;
   gap: 10px;
 }
-
 #form-resena label {
   font-weight: bold;
   font-size: 1.1rem;
 }
-
 #form-resena textarea {
   resize: vertical;
   padding: 10px;
@@ -123,7 +106,6 @@ footer {
   min-height: 100px;
   transition: border-color 0.3s ease;
 }
-
 #form-resena textarea:focus {
   border-color: #005f73;
   outline: none;
@@ -132,36 +114,32 @@ footer {
 #form-resena button {
   width: 120px;
   padding: 10px;
-  background-color: #005f73;
+  background-color: #000000;
   color: white;
   border: none;
   border-radius: 5px;
   font-weight: bold;
   cursor: pointer;
-  align-self: flex-start;
+  align-self: center;
   transition: background-color 0.3s ease;
 }
-
 #form-resena button:hover {
-  background-color: #0a9396;
+  background-color: #b11f00;
 }
-
 #portada-info {
   display: flex;
   align-items: flex-start;
-  gap: 70px; 
+  gap: 70px;
 }
-
 #portada-info div {
   padding-left: 0;
 }
-
 #portada-info h2 {
-  font-size: 2.5rem; 
+  font-size: 2.5rem;
   margin-top: 0.5px;
   margin-bottom: 0.5px;
   text-align: left;
-  font-weight: bold;
+  front-weight: bold;
 }
 #portada-info img {
   width: 250px;
@@ -169,11 +147,9 @@ footer {
   object-fit: cover;
   border-radius: 5px;
 }
-
-
 .rating {
   font-size: 2.10rem;
-  color: #DA9B2F; /* color dorado tipo IMDb */
+  color: #DA9B2F;
   margin-bottom: 10px;
 }
 
@@ -182,10 +158,8 @@ footer {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  margin-top: 20px;
+  margin-top: 50px;
 }
-
-
 .carrusel-btn {
   background-color: #eee;
   border: none;
@@ -195,74 +169,59 @@ footer {
   border-radius: 50%;
   transition: background-color 0.2s;
 }
-
 .carrusel-btn:hover {
   background-color: #ccc;
 }
-
 #imagen-carrusel {
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  width: auto;      
-  height: 250px;       
+  width: auto;
+  height: 250px;
   border-radius: 10px; /
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
-
 header {
   background: #fff;
   padding-bottom: 10px;
   border-bottom: 1px solid #ccc;
 }
-
-/* --- Barra superior --- */
 .topbar {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* clave para centrar verticalmente */
+  align-items: center;
   background: #333;
   color: white;
   padding: 10px 20px;
   font-size: 13px;
 }
-
 .topbar .site-name {
   font-family: 'EB Garamond', serif;
   font-weight: 600;
   font-size: 18px;
 }
-
 .topbar a {
   color: #87ceeb;
   margin-left: 10px;
   text-decoration: none;
 }
-
-/* --- Logo --- */
 .logo {
   height: 50px;
   display: block;
 }
-
-/* --- Título principal --- */
 h1 {
   text-align: center;
   margin: 20px 0 10px;
   font-size: 36px;
   font-family: 'Yusei Magic', sans-serif;
 }
-
-/* --- Categorías de navegación --- */
 .categories {
   text-align: center;
   margin-bottom: 20px;
 }
-
 .categories a {
   margin: 0 15px;
   text-decoration: none;
   color: #333;
   font-weight: bold;
 }
-
 .site-name {
   font-family: 'EB Garamond', serif;
   font-weight: 600;
@@ -270,7 +229,6 @@ h1 {
   color: white;
   line-height: 1;
 }
-
 .branding {
   display: flex;
   align-items: center;
@@ -281,7 +239,6 @@ h1 {
   margin-bottom: 8px;
   line-height: 1.4;
 }
-
 .detalles strong {
   font-weight: bold;
 }
@@ -291,14 +248,12 @@ h1 {
   gap: 15px;
   margin-top: 15px;
 }
-
 .libro {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
-
 .libro img {
   width: 100px;
   height: 150px;
@@ -306,7 +261,6 @@ h1 {
   border-radius: 5px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-
 .libro p {
   margin-top: 8px;
   font-size: 0.9rem;
@@ -318,9 +272,62 @@ h1 {
   font-size: 1rem;
   color: #333;
 }
-
-    
-    
+.star-rating {
+  direction: rtl;
+  font-size: 2rem;
+  unicode-bidi: bidi-override;
+  display: inline-block;
+  cursor: pointer;
+  justify-conten: center;
+}
+.star {
+  color: #ccc;
+  transition: color 0.2s;
+  user-select: none;
+  padding: 0 5px;
+}
+.star.hover,
+.star.selected {
+  color: gold;
+}
+.centrar-estrellas-boton {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+}
+.titulo-con-wishlist {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.titulo-con-wishlist h2 {
+  flex: 1;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.wishlist-heart-text {
+  position: absolute;
+  right: -25px;
+  font-size: 20px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.wishlist-heart-text:hover {
+  background-color: red;
+}
+.wishlist-heart-text.activated {
+  background-color: red;
+}
   </style>
 </head>
 <body>
@@ -328,85 +335,184 @@ h1 {
 <header>
   <div class="topbar">
     <div class="branding">
+        <a href="/">
       <img src="https://i.postimg.cc/fR7ZTbFC/image.png" alt="Logo Librería ARU" class="logo">
+      </a>
       <span class="site-name">LIBRERÍA ARU</span>
     </div>
     <nav class="user-nav">
-      <a href="#">MI CUENTA</a> | 
-      <a href="#">MI LISTA DE DESEOS</a> | 
-      <a href="#">MI CARRITO</a> | 
-      <a href="#">INICIA SESIÓN</a>
+      <a href="#">FORO DE COMUNIDAD </a> |
+      <a href="#">MI CUENTA </a> |
+      <a href="#" id="wishlist-link">MI LISTA DE DESEOS </a> |
+      <a href="#">MI CARRITO </a>  |
+      <a href="#">INICIA SESIÓN </a>|
     </nav>
   </div>
+  </nav>
 </header>
 
 <main>
   <div class="contenedor-centro">
     <section id="portada-info">
-      <div class="carrusel">
-        <button class="carrusel-btn prev">&#10094;</button>
-        <img id="imagen-carrusel" src="https://via.placeholder.com/200x280?text=Vista+1" alt="Vista del libro" />
-        <button class="carrusel-btn next">&#10095;</button>
-      </div>
+    <div class="carrusel">
+  <button class="carrusel-btn prev">&#10094;</button>
+  <img id="imagen-carrusel" src="https://via.placeholder.com/200x280?text=Vista+1" alt="Vista del libro" />
+  <button class="carrusel-btn next">&#10095;</button>
+  </div>
 
       <div>
-        <h2>EL PLAN MAESTRO</h2>
+        <<div class="titulo-con-wishlist">
+          <h2>EL PLAN MAESTRO</h2>
+          <button id="wishlist-btn" class="wishlist-heart-text">❤</button>
+          <span id="wishlist-count" class="wishlist-count">0</span>
+        </div>
+        <p><strong>Autor:</strong> Javier Sierra</p>
         <div class="rating">
-          ★★★★☆
+        ★★★★☆
         </div>
         <div class="detalles">
-          <p><strong>Autor:</strong> Javier Sierra</p>
-          <p><strong>Editorial:</strong> Editorial Planeta</p>
-          <p><strong>Año:</strong> 26 Febrero 2025</p>
-          <p class="descripcion-libro">
-            <strong>Sinopsis:</strong> Plan Maestro de Javier Sierra, es una fascinante novela que explora la existencia de una comunidad secreta que protege obras de arte con un poder oculto. A través de su investigación, el autor revela la influencia de misteriosos “maestros instructores” que han guiado a la humanidad desde tiempos remotos mediante el arte, la ciencia y la espiritualidad. Una obra que mezcla historia, misterio y cultura en un viaje apasionante por los secretos de la civilización.
-          </p>
-        </div>
+         <br>
+         <p><strong>Genero:</strong> Novela contemporanea</p>
+        <p><strong>Editorial:</strong> Editorial Planeta</p>
+        <p><strong>Año:</strong> 26 Febrero 2025</p>
+  <p class="descripcion-libro">
+    <strong>Sinopsis:</strong> Plan Maestro de Javier Sierra, es una fascinante novela que explora la existencia de una comunidad secreta que protege obras de arte con un poder oculto. A través de su investigación, el autor revela la influencia de misteriosos “maestros instructores” que han guiado a la humanidad desde tiempos remotos mediante el arte, la ciencia y la espiritualidad. Una obra que mezcla historia, misterio y cultura en un viaje apasionante por los secretos de la civilización.
+  </p>
+</div>
+          </div>
       </div>
     </section>
   </div>
 
-  <section id="contenido-inferior">
-    <div id="resena">
-      <form id="form-resena">
-        <label for="nueva-resena">Enviar tu reseña:</label>
-        <textarea id="nueva-resena" name="nueva-resena" rows="5" placeholder="Escribe tu reseña aquí..."></textarea>
-        <button type="submit">Enviar</button>
-      </form>
-    </div>
+<section id="contenido-inferior">
+  <div id="resena">
+  <form id="form-resena">
+    <label for="nueva-resena">Enviar tu reseña:</label>
 
-    <aside id="libros-recomendados">
-      <h3>LIBROS RECOMENDADOS</h3>
-      <div class="libros-grid">
-        <div class="libro">
-          <a href='https://postimg.cc/3d4pQhZz' target='_blank'><img src='https://i.postimg.cc/3d4pQhZz/71-E8-VNPC1d-L-AC-UF894-1000-QL80.jpg' border='0' alt='71-E8-VNPC1d-L-AC-UF894-1000-QL80'/></a>
-          <p>UGLY LOVE</p>
-        </div>
-        <div class="libro">
-          <a href='https://postimg.cc/bS2vWyjT' target='_blank'><img src='https://i.postimg.cc/bS2vWyjT/61su39k8-NUL.webp' border='0' alt='61su39k8-NUL'/></a>
-          <p>THE HANDMAID'S TALE</p>
-        </div>
-        <div class="libro">
-          <a href='https://postimg.cc/MfRWt9y3' target='_blank'><img src='https://i.postimg.cc/MfRWt9y3/651cc7afadc3c.webp' border='0' alt='651cc7afadc3c'/></a>
-          <p>VERONIKA DECIDE MORIR</p>
-        </div>
-        <div class="libro">
-          <a href='https://postimg.cc/JtB41z93' target='_blank'><img src='https://i.postimg.cc/JtB41z93/images.jpg' border='0' alt='images'/></a>
-          <p>EL LLANO EN LLAMAS</p>
-        </div>
-      </div>
-    </aside>
-  </section>
+  <div class="centrar-estrellas-boton">
+    <div class="star-rating">
+      <span data-value="5" class="star">&#9733;</span>
+      <span data-value="4" class="star">&#9733;</span>
+      <span data-value="3" class="star">&#9733;</span>
+      <span data-value="2" class="star">&#9733;</span>
+      <span data-value="1" class="star">&#9733;</span>
+    </div>
+    </div>
+    <textarea id="nueva-resena" name="nueva-resena" rows="5" placeholder="Escribe tu reseña aquí..."></textarea>
+    <button class="boton" type="submit">Enviar</button>
+  </form>
+</div>
+
+
+<aside id="libros-recomendados">
+  <h3>LIBROS RECOMENDADOS</h3>
+  <div class="libros-grid">
+    <div class="libro">
+    <a href='#' target='_blank'><img src='https://i.postimg.cc/3d4pQhZz/71-E8-VNPC1d-L-AC-UF894-1000-QL80.jpg' border='0' alt='71-E8-VNPC1d-L-AC-UF894-1000-QL80'/></a>
+      <p>UGLY LOVE</p>
+    </div>
+    <div class="libro">
+      <a href='#' target='_blank'><img src='https://i.postimg.cc/bS2vWyjT/61su39k8-NUL.webp' border='0' alt='61su39k8-NUL'/></a>
+      <p>THE HANDMAID'S TALE</p>
+    </div>
+    <div class="libro">
+     <a href='# target='_blank'><img src='https://i.postimg.cc/MfRWt9y3/651cc7afadc3c.webp' border='0' alt='651cc7afadc3c'/></a>
+      <p>VERONIKA DECIDE MORIR</p>
+    </div>
+    <div class="libro">
+      <a href='# target='_blank'><img src='https://i.postimg.cc/JtB41z93/images.jpg' border='0' alt='images'/></a>
+      <p>EL LLANO EN LLAMAS</p>
+    </div>
+  </div>
+</aside>
+
+</section>
 
 </main>
 
 <footer>
   &copy; UlysesCepedaCastro
 </footer>
+  <script>
 
-<script>
-  <!-- Aquí va tu JavaScript -->
-</script>
+const imagenes = [
+  "https://i.postimg.cc/FsRNcWgS/portada-el-plan-maestro-javier-sierra-202502190053.jpg",
+  "https://i.postimg.cc/SK4PLjFP/415384-el-plan-maestro-9788408296966-contra-202501281211.jpg",
+  "https://i.postimg.cc/PrzVXT8z/el-plan-maestro-9786073923873-3d-202504221726.png"
+];
 
+let indiceActual = 0;
+
+const imagen = document.getElementById("imagen-carrusel");
+const btnPrev = document.querySelector(".carrusel-btn.prev");
+const btnNext = document.querySelector(".carrusel-btn.next");
+
+btnPrev.addEventListener("click", () => {
+  indiceActual = (indiceActual - 1 + imagenes.length) % imagenes.length;
+  imagen.src = imagenes[indiceActual];
+});
+
+btnNext.addEventListener("click", () => {
+  indiceActual = (indiceActual + 1) % imagenes.length;
+  imagen.src = imagenes[indiceActual];
+});
+
+// Estrellas de reseña interactivas
+const stars = document.querySelectorAll('.star-rating .star');
+let selectedRating = 0;
+
+stars.forEach(star => {
+  star.addEventListener('mouseover', () => {
+    const val = parseInt(star.getAttribute('data-value'));
+    highlightStars(val);
+  });
+
+  star.addEventListener('mouseout', () => {
+    highlightStars(selectedRating);
+  });
+
+  star.addEventListener('click', () => {
+    selectedRating = parseInt(star.getAttribute('data-value'));
+    highlightStars(selectedRating);
+  });
+});
+
+function highlightStars(rating) {
+  stars.forEach(star => {
+    const val = parseInt(star.getAttribute('data-value'));
+    if (val <= rating) {
+      star.classList.add('selected');
+    } else {
+      star.classList.remove('selected');
+    }
+  });
+}
+
+const wishlistBtn = document.getElementById('wishlist-btn');
+const wishlistCounter = document.getElementById('wishlist-count');
+const wishlistLink = document.getElementById('wishlist-link');
+let wishlistCount = 0;
+let wishlistActive = false;
+
+wishlistBtn?.addEventListener('click', () => {
+  if (!wishlistActive) {
+    wishlistCount++;
+    wishlistBtn.classList.add('activated');
+    wishlistActive = true;
+  } else {
+    wishlistCount--;
+    wishlistBtn.classList.remove('activated');
+    wishlistActive = false;
+  }
+
+  wishlistCounter.textContent = wishlistCount;
+
+  if (wishlistCount > 0) {
+    wishlistLink.textContent = `MI LISTA DE DESEOS  (${wishlistCount})`;
+  } else {
+    wishlistLink.textContent = `MI LISTA DE DESEOS`;
+  }
+});
+  </script>
 </body>
 </html>

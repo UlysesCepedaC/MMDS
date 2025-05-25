@@ -166,28 +166,28 @@ footer li {
   position: relative;
   width: 150px;
   height: 250px;
-  overflow: hidden; 
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: transform 0.3s;
 }
 
 /* --- Efecto al pasar el cursor: escala la tarjeta del libro --- */
 .book-container:hover {
-  transform: scale(1.05); 
+  transform: scale(1.05);
 }
 
 /* --- Imagen del libro con transición para el desenfoque --- */
 .book-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover; 
+  object-fit: cover;
   display: block;
   transition: filter 0.3s ease;
 }
 
 /* --- Al hacer hover, la imagen se desenfoca y oscurece un poco --- */
 .book-container:hover img {
-  filter: blur(3px) brightness(0.6); 
+  filter: blur(3px) brightness(0.6);
 }
 
 /* --- Información del libro sobrepuesta --- */
@@ -202,7 +202,7 @@ footer li {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
   text-align: center;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -237,14 +237,16 @@ footer li {
   <header>
     <div class="topbar">
       <div class="branding">
-        <img src="https://i.postimg.cc/fR7ZTbFC/image.png" alt="Logo Librería ARU" class="logo">
+        <a href="/">
+      <img src="https://i.postimg.cc/fR7ZTbFC/image.png" alt="Logo Librería ARU" class="logo">
+      </a>
         <span class="site-name">LIBRERÍA ARU</span>
       </div>
 
       <nav class="user-nav">
-        <a href="#">MI CUENTA</a> | 
-        <a href="#">MI LISTA DE DESEOS</a> | 
-        <a href="#">MI CARRITO</a> | 
+        <a href="#">MI CUENTA</a> |
+        <a href="#">MI LISTA DE DESEOS</a> |
+        <a href="#">MI CARRITO</a> |
         <a href="#">INICIA SESIÓN</a>
       </nav>
     </div>
@@ -296,6 +298,7 @@ footer li {
 
 <script>
     const books = [
+    { title: "El plan maestro", author: "Javier Sierra", genre: "Misterio", year: 2024, price: 299, format: "Ebook/Pasta Blanda/Pasta Dura",cover: "https://i.postimg.cc/FsRNcWgS/portada-el-plan-maestro-javier-sierra-202502190053.jpg",link: "/libro1"  },
   { title: "Funny Story", author: "Emily Henry", genre: "Romance", year: 2024, price: 405, format: "Ebook/Pasta Blanda/Pasta Dura",cover: "https://m.media-amazon.com/images/I/71PSVpqu3vL._AC_UF894,1000_QL80_.jpg",link: "/libro1"  },
   { title: "That´s Not My Name", author:"Megan Lally",genre: "Misterio", year: 2024, price: 260, format:"Pasta Blanda",cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1717940704i/123429195.jpg" },
   { title: "Translation State", author:"Ann Leckie",genre: "Ciencia Ficción", year: 2023, price: 280, format:"Ebook",cover: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcShbD_dCAenh-OLbvFhuuL-RkHkfL2WZoNWoozVJ3_g-EXylPWy" },
@@ -336,7 +339,7 @@ function renderBooks(filteredBooks) {
 <div class="book-container">
 <img src="${book.cover}" alt="${book.title}">
 <div class="book-info">
-<p><strong><a href="${book.link || '#'}">${book.title}</a></strong></p>
+<p><strong><a href="${book.link || '#'}" style="color:#FF0000; text-decoration:none;">${book.title}</a></strong></p>
 <p>${book.author}</p>
 <p>Precio: $${book.price}</p>
 <p>Formato: ${book.format || "No especificado"}</p>
