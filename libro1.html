@@ -19,6 +19,13 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+.cart-icon {
+  height: 50px;
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 main {
   flex: 1;
   padding: 30px;
@@ -45,8 +52,6 @@ main {
 #portada-info div {
   flex: 1;
 }
-/*#detalles {
-}*/
 #contenido-inferior {
   display: flex;
   gap: 0px;
@@ -342,9 +347,10 @@ h1 {
     </div>
     <nav class="user-nav">
       <a href="#">FORO DE COMUNIDAD </a> |
-      <a href="#">MI CUENTA </a> |
       <a href="#" id="wishlist-link">MI LISTA DE DESEOS </a> |
-      <a href="#">MI CARRITO </a>  |
+         <a href="/">
+      <img src="https://i.postimg.cc/LsR7VYP6/image-1.png" alt="Carrito" class="cart-icon">
+      </a> |
       <a href="#">INICIA SESIÓN </a>|
     </nav>
   </div>
@@ -457,7 +463,6 @@ btnNext.addEventListener("click", () => {
   imagen.src = imagenes[indiceActual];
 });
 
-// Estrellas de reseña interactivas
 const stars = document.querySelectorAll('.star-rating .star');
 let selectedRating = 0;
 
