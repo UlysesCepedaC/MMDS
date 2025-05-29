@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ARU</title>
+  <link rel="icon" href="https://i.postimg.cc/fR7ZTbFC/image.png" type="image/png" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    main {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      color: #000000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 84vh;
+      padding: 0;
+    }
+
+    .login-container {
+      background-color: #fff;
+      padding: 40px 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 320px;
+      margin: -50px;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    .login-container h1 {
+      margin-bottom: 24px;
+      font-weight: 600;
+      font-size: 1.8rem;
+      text-align: center;
+      color: #222;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .input-group label {
+      margin-bottom: 6px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .input-group input {
+      padding: 12px 14px;
+      font-size: 1rem;
+      border: 1.5px solid #ccc;
+      border-radius: 5px;
+      transition: border-color 0.3s ease;
+    }
+
+    .input-group input:focus {
+      border-color: #ff0000;
+      outline: none;
+      box-shadow: 0 0 5px rgb(0, 0, 0);
+    }
+
+    button.btn {
+      width: 100%;
+      padding: 14px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 6px;
+      background-color: #000000;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button.btn:hover {
+      background-color: #ff0000;
+    }
+
+    .error-message {
+      color: #ff0000;
+      font-size: 0.9rem;
+      margin-top: -14px;
+      margin-bottom: 14px;
+      display: none;
+      text-align: center;
+    }
+
+    .forgot {
+      margin-top: 12px;
+      font-size: 0.85rem;
+      text-align: center;
+      padding-top: 5px;
+      margin-bottom: -15px;
+    }
+
+    .forgot a {
+      color: #000000;
+      text-decoration: none;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #333;
+      color: white;
+      padding: 10px 20px;
+      font-size: 13px;
+    }
+
+    .topbar .site-name {
+      font-family: 'EB Garamond', serif;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .topbar a {
+      color: #87ceeb;
+      margin-left: 10px;
+      text-decoration: none;
+    }
+
+    .logo,
+    .foro-icon,
+    .cart-icon,
+    .perfil-icon,
+    .wishlist-icon {
+      height: 60px;
+      width: auto;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .wishlist-icon {
+      margin-left: -5px;
+      cursor: pointer;
+    }
+
+    .foro-icon {
+      margin-right: 3px;
+    }
+    .cart-icon {
+      margin-right: 2px;
+    }
+    header {
+      background: #fff;
+      border-bottom: 1px solid #ccc;
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="topbar">
+      <div class="branding">
+        <a href="/">
+          <img src="https://i.postimg.cc/fR7ZTbFC/image.png" alt="Logo Librería ARU" class="logo">
+        </a>
+        <span class="site-name">LIBRERÍA ARU</span>
+      </div>
+      <nav class="user-nav">
+        <a href="/">
+          <img src="https://i.postimg.cc/4dtPwfHN/image-5.png" alt="Foro" class="foro-icon"> 
+        </a> |
+        <a href="#" id="wishlist-link">
+          <img src="https://i.postimg.cc/R0BjwDDt/corazon.png" alt="Wishlist" class="wishlist-icon">
+        </a> |
+        <a href="/" id="cart-link">
+          <img src="https://i.postimg.cc/LsR7VYP6/image-1.png" alt="Carrito" class="cart-icon">
+        </a> |
+        <a href="/cuenta.html">
+          <img src="https://i.postimg.cc/zGbJx67P/perfil.png" alt="Perfil" class="perfil-icon">
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="login-container">
+      <form id="loginForm" class="login-form" novalidate>
+        <h1>Iniciar Sesión</h1>
+
+        <div class="input-group">
+          <label for="username">Usuario</label>
+          <input type="text" id="username" name="username" required autocomplete="off" />
+          <span class="error-message"></span>
+        </div>
+
+        <div class="input-group">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" name="password" required />
+          <span class="error-message"></span>
+        </div>
+
+        <button type="submit" class="btn">Entrar</button>
+
+        <p class="forgot"><a href="#">¿Olvidaste tu contraseña?</a></p>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    &copy; HOLAA
+  </footer>
+
+  <script>
+    const form = document.getElementById('loginForm');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const usernameInput = form.username;
+      const passwordInput = form.password;
+
+      let valid = true;
+
+      clearError(usernameInput);
+      clearError(passwordInput);
+
+      if (!usernameInput.value.trim()) {
+        showError(usernameInput, 'El usuario es obligatorio');
+        valid = false;
+      }
+
+      if (!passwordInput.value) {
+        showError(passwordInput, 'La contraseña es obligatoria');
+        valid = false;
+      } else if (passwordInput.value.length < 6) {
+        showError(passwordInput, 'La contraseña debe tener al menos 6 caracteres');
+        valid = false;
+      }
+
+      if (valid) {
+        alert('Inicio de sesión válido, enviando datos...');
+        // form.submit(); // Habilita si deseas enviar el form
+      }
+    });
+
+    function showError(input, message) {
+      const inputGroup = input.parentElement;
+      inputGroup.classList.add('error');
+      const errorSpan = inputGroup.querySelector('.error-message');
+      errorSpan.style.display = 'block';
+      errorSpan.textContent = message;
+    }
+
+    function clearError(input) {
+      const inputGroup = input.parentElement;
+      inputGroup.classList.remove('error');
+      const errorSpan = inputGroup.querySelector('.error-message');
+      errorSpan.style.display = 'none';
+      errorSpan.textContent = '';
+    }
+  </script>
+</body>
+</html>
