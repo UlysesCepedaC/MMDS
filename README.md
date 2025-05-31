@@ -1,2 +1,2 @@
 Proyecto Modelos y Metodos del Desarollo de Software
-Ya esta listo la mayoria de funcionalidades, solo falta el carrito y que se muestre cuando se agrega al carrito desde wishlist y ya podemos empezar a agregar mas libros.
+Pagina de venta de libros, para su funcionalidad, solamente correr el codigo de index, ya que es nuestra pagina principal. Al tener todo en html, no es necesario descargar ninguna otra cosa mas que el codigo.
