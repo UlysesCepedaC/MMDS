@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ARU</title>
+  <link rel="icon" href="https://i.postimg.cc/fR7ZTbFC/image.png" type="image/png" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    main {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      color: #000000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 84vh;
+      padding: 0;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #333;
+      color: white;
+      padding: 10px 20px;
+      font-size: 13px;
+    }
+
+    .topbar .site-name {
+      font-family: 'EB Garamond', serif;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .topbar a {
+      color: #87ceeb;
+      margin-left: 10px;
+      text-decoration: none;
+    }
+
+    .logo,
+    .foro-icon,
+    .cart-icon,
+    .perfil-icon,
+    .wishlist-icon {
+      height: 60px;
+      width: auto;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .wishlist-icon {
+      margin-left: -5px;
+      cursor: pointer;
+    }
+
+    .foro-icon {
+      margin-right: 3px;
+    }
+    .cart-icon {
+      margin-right: 2px;
+    }
+    header {
+      background: #fff;
+      border-bottom: 1px solid #ccc;
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 0.9rem;
+    }
+
+    #wishlist-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .wishlist-item {
+      background: white;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: left;
+      transition: transform 0.2s ease;
+    }
+
+    .wishlist-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .wishlist-item img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .wishlist-item h3 {
+      color: #000000;
+      margin: 0 0 5px;
+    }
+
+    .wishlist-item p {
+      margin: 4px 0;
+      color: #444;
+    }
+
+    .empty-message {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #777;
+      margin-top: 2rem;
+    }
+
+    .button-group {
+    display: flex;
+    justify-content: center; /* centra horizontalmente */
+    gap: 10px; /* espacio entre botones */
+    margin-top: 10px;
+    }
+
+    .button-group button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    }
+
+    .delete-btn {
+    background-color: #e60023;
+    color: white;
+    }
+
+    .delete-btn:hover {
+    background-color: #b0001a;
+    }
+
+    .add-btn {
+    background-color: #000000;
+    color: white;
+    }
+
+    .add-btn:hover {
+    background-color: #0056b3;
+    }
+
+        .wishlist-content {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    }
+
+    .wishlist-content img {
+    width: 120px;
+    height: auto;
+    border-radius: 6px;
+    object-fit: cover;
+    }
+
+    .wishlist-info {
+    flex: 1;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="topbar">
+      <div class="branding">
+        <a href="/">
+          <img src="https://i.postimg.cc/fR7ZTbFC/image.png" alt="Logo Librería ARU" class="logo">
+        </a>
+        <span class="site-name">LIBRERÍA ARU</span>
+      </div>
+      <nav class="user-nav">
+        <a href="/">
+          <img src="https://i.postimg.cc/4dtPwfHN/image-5.png" alt="Foro" class="foro-icon"> 
+        </a> |
+        <a href="#" id="wishlist-link">
+          <img src="https://i.postimg.cc/R0BjwDDt/corazon.png" alt="Wishlist" class="wishlist-icon">
+        </a> |
+        <a href="/" id="cart-link">
+          <img src="https://i.postimg.cc/LsR7VYP6/image-1.png" alt="Carrito" class="cart-icon">
+        </a> |
+        <a href="/cuenta.html">
+          <img src="https://i.postimg.cc/zGbJx67P/perfil.png" alt="Perfil" class="perfil-icon">
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h2>Mi Wishlist</h2>
+    <div id="wishlist-container"></div>
+  </main>
+
+  <footer>
+    &copy; HOLAA
+  </footer>
+
+  <script>
+       const wishlistContainer = document.getElementById("wishlist-container");
+
+    function loadWishlist() {
+      wishlistContainer.innerHTML = "";
+      const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+      if (wishlist.length === 0) {
+        wishlistContainer.innerHTML = '<p class="empty-message">No hay productos en tu wishlist.</p>';
+        return;
+      }
+
+      wishlist.forEach((product, index) => {
+        const item = document.createElement("div");
+        item.className = "wishlist-item";
+        item.innerHTML = `
+            <div class="wishlist-content">
+                <img src='https://i.postimg.cc/FsRNcWgS/portada-el-plan-maestro-javier-sierra-202502190053.jpg' alt="${product.name}">
+                <div class="wishlist-info">
+                <h3>${product.name}</h3>
+                <p><strong>Autor:</strong> ${product.author}</p>
+                <p><strong>Precio:</strong> ${product.price}</p>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="button-group">
+                <button class="add-btn" data-index="${index}">Agregar al carrito</button>
+                <button class="delete-btn" data-index="${index}">Eliminar</button>
+                </div>
+                </div>
+            </div>
+            `;
+
+        wishlistContainer.appendChild(item);
+      });
+
+ 
+      document.querySelectorAll(".delete-btn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          const index = e.target.getAttribute("data-index");
+          removeFromWishlist(parseInt(index));
+        });
+      });
+
+    function removeFromWishlist(index) {
+      let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+      wishlist.splice(index, 1); 
+      localStorage.setItem("wishlist", JSON.stringify(wishlist));
+      loadWishlist();
+    }
+}
+
+    loadWishlist();
+  </script>
+</body>
+</html>
