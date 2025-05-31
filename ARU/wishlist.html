@@ -139,6 +139,7 @@
     }
 
     .button-group button {
+    margin: 60px 80px 20px 20px;
     padding: 8px 16px;
     border: none;
     border-radius: 4px;
@@ -156,12 +157,12 @@
     background-color: #b0001a;
     }
 
-    .add-btn {
+    .add-to-cart-btn {
     background-color: #000000;
     color: white;
     }
 
-    .add-btn:hover {
+    .add-to-cart-btn:hover {
     background-color: #0056b3;
     }
 
@@ -170,7 +171,7 @@
     gap: 15px;
     align-items: flex-start;
     }
-
+    
     .wishlist-content img {
     width: 120px;
     height: auto;
@@ -181,6 +182,46 @@
     .wishlist-info {
     flex: 1;
     }
+
+    #custom-alert {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #222;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 15px;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+#custom-alert.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+.cart-count {
+  position: absolute;
+  top: -1px;
+  right: 2px;
+  background: linear-gradient(45deg, #ff416c, #ff4b2b);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(255, 75, 43, 0.8);
+  padding: 4px 8px;
+  display: none; /* Oculto si es 0 */
+  transition: background-color 0.3s ease;
+}
+#cart-link {
+  position: relative;
+  display: inline-block;
+}
 
   </style>
 </head>
@@ -202,8 +243,9 @@
           <img src="https://i.postimg.cc/R0BjwDDt/corazon.png" alt="Wishlist" class="wishlist-icon">
         </a> |
         <a href="/" id="cart-link">
-          <img src="https://i.postimg.cc/LsR7VYP6/image-1.png" alt="Carrito" class="cart-icon">
-        </a> |
+            <img src="https://i.postimg.cc/LsR7VYP6/image-1.png" alt="Carrito" class="cart-icon">
+            <span id="cart-count" class="cart-count">0</span>
+          </a> |
         <a href="/cuenta.html">
           <img src="https://i.postimg.cc/zGbJx67P/perfil.png" alt="Perfil" class="perfil-icon">
         </a>
@@ -221,59 +263,105 @@
   </footer>
 
   <script>
-       const wishlistContainer = document.getElementById("wishlist-container");
-
+    const wishlistContainer = document.getElementById("wishlist-container");
+  
     function loadWishlist() {
       wishlistContainer.innerHTML = "";
       const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-
+  
       if (wishlist.length === 0) {
         wishlistContainer.innerHTML = '<p class="empty-message">No hay productos en tu wishlist.</p>';
         return;
       }
-
-      wishlist.forEach((product, index) => {
+  
+      wishlist.forEach((product) => {
         const item = document.createElement("div");
         item.className = "wishlist-item";
         item.innerHTML = `
-            <div class="wishlist-content">
-                <img src='https://i.postimg.cc/FsRNcWgS/portada-el-plan-maestro-javier-sierra-202502190053.jpg' alt="${product.name}">
-                <div class="wishlist-info">
-                <h3>${product.name}</h3>
-                <p><strong>Autor:</strong> ${product.author}</p>
-                <p><strong>Precio:</strong> ${product.price}</p>
-                <br>
-                <br>
-                <br>
-                <br>
-                <div class="button-group">
-                <button class="add-btn" data-index="${index}">Agregar al carrito</button>
-                <button class="delete-btn" data-index="${index}">Eliminar</button>
-                </div>
-                </div>
+          <div class="wishlist-content">
+            <img src="${product.image}" alt="${product.name}">
+            <div class="wishlist-info">
+              <h3>${product.name}</h3>
+              <p><strong>Autor:</strong> ${product.author}</p>
+              <p><strong>Precio:</strong> ${product.price}</p>
+              <div class="button-group">
+                <button class="add-to-cart-btn" data-name="${product.name}">Agregar al carrito</button>
+                <button class="delete-btn" data-name="${product.name}">Eliminar</button>
+              </div>
             </div>
-            `;
-
+          </div>
+        `;
         wishlistContainer.appendChild(item);
       });
-
- 
+  
+      // Botones: Eliminar de wishlist
       document.querySelectorAll(".delete-btn").forEach(btn => {
         btn.addEventListener("click", (e) => {
-          const index = e.target.getAttribute("data-index");
-          removeFromWishlist(parseInt(index));
+          const name = e.target.getAttribute("data-name");
+          removeFromWishlistByName(name);
         });
       });
-
-    function removeFromWishlist(index) {
+  
+      // Botones: Agregar al carrito
+      document.querySelectorAll(".add-to-cart-btn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          const name = e.target.getAttribute("data-name");
+          const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+          const product = wishlist.find(p => p.name === name);
+          if (product) {
+            // Aquí agregarías al carrito si lo implementas
+            showAlert(`"${product.name}" agregado al carrito`);
+          }
+        });
+      });
+    }
+  
+    function removeFromWishlistByName(name) {
       let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-      wishlist.splice(index, 1); 
-      localStorage.setItem("wishlist", JSON.stringify(wishlist));
+      const newWishlist = wishlist.filter(item => item.name !== name);
+  
+      const removedItem = wishlist.find(item => item.name === name);
+      if (removedItem) {
+        showAlert(`"${removedItem.name}" eliminado de tu wishlist`);
+      }
+  
+      localStorage.setItem("wishlist", JSON.stringify(newWishlist));
       loadWishlist();
     }
-}
+  
+    // Alerta personalizada
+    function showAlert(message, duration = 3000) {
+      const alertBox = document.getElementById("custom-alert");
+      alertBox.textContent = message;
+      alertBox.classList.add("show");
+  
+      setTimeout(() => {
+        alertBox.classList.remove("show");
+    }, duration);
+  }
+  const cartBtn = document.querySelector('.add-to-cart-btn');
+  const cartCounter = document.getElementById('cart-count');
+  const cartLink = document.getElementById('cart-link');
 
-    loadWishlist();
+  let cartCount = 0;
+
+  cartBtn?.addEventListener('click', () => {
+    cartCount++;
+
+    cartCounter.textContent = cartCount;
+
+    if (cartCount > 0) {
+      cartCounter.style.display = 'inline-block';
+      cartLink.title = `Carrito (${cartCount})`;
+    } else {
+      cartCounter.style.display = 'none';
+      cartLink.title = `Carrito`;
+    }
+  });
+
+  loadWishlist();
   </script>
+  <div id="custom-alert"></div>
+
 </body>
 </html>
