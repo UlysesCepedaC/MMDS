@@ -1,1 +1,2 @@
 Probando rama feature
+La utilice para hacer cambios, probando la funcionalidad de las ramas. Probando nuevas cosas sin hacer cambios en la rama principal. Una vez terminado se puede hacer merge y que se haga una sola rama.
